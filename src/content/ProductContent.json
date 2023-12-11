@@ -1,0 +1,26 @@
+{
+  "title": "Dịch vụ",
+  "text": "Chúng tôi cung cấp đa dạng các dịch vụ bảo vệ",
+  "section": [
+    {
+      "title": "Yếu nhân",
+      "content": "Chúng tôi cung cấp dịch vụ bảo vệ yếu nhân như các chính trị gia, người nổi tiếng, các doanh nhân và học giả quan trọng trong các hội nghị khu vực và toàn cầu",
+      "icon": "celebrities.png"
+    },
+    {
+      "title": "Cửa hàng, phòng giao dịch",
+      "content": "Chúng tôi cung cấp dịch vụ bảo vệ các cửa hàng tiện lợi, khu mua sắm, phòng giao dịch và các đại lí của các doanh nghiệp với mức chi phí thích hợp",
+      "icon": "store.png"
+    },
+    {
+      "title": "Doanh nghiệp",
+      "content": "Chúng tôi cung cấp dịch vụ bảo vệ các doanh nghiệp lớn, khu công nghiệp, khu tập trung đông người như bệnh viện, tổ chức chính phủ",
+      "icon": "enterprise.jpg"
+    },
+    {
+      "title": "Sự kiện",
+      "content": "Chúng tôi cung cấp dịch vụ bảo vệ các sự kiện thể thao, giải trí, lễ tết, chính trị mang tầm khu vực và quốc tế",
+      "icon": "event.png"
+    }
+  ]
+}

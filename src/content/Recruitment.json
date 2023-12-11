@@ -1,0 +1,17 @@
+{
+    "title": "Liên hệ với chúng tôi",
+    "text": "dsd",
+    "section": [
+        {
+            "title": "Why Antd?",
+            "content": "Ant Design is a React UI library that has a lot of easy-to-use components for building elegant UI.",
+            "icon": "notes.svg"
+        },
+        {
+            "title": "Why styled-components?",
+            "content": "Styled Components gives you total control over your components.",
+            "icon": "notes.svg"
+        }
+    ],
+    "button": "dsds"
+}

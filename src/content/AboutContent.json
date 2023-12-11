@@ -1,0 +1,16 @@
+{
+  "title": "Về chúng tôi",
+  "text": "Công ty Cổ phần Đầu tư và Công nghệ GHD thành lập ngày 28/6/2010 với dịch vụ ban đầu là cung cấp và phát triển nhạc sáng tạo trên nền tảng kênh Imuzik Viettel (8/2010). Giai đoạn đầu chúng tôi tập trung vào phát triển các sản phẩm sáng tạo và những dịch vụ giá trị gia tăng cho nhà mạng: Viettel, Mobifone, với nhiều dự án tạo nên tên tuổi GHD như: Auto SMS, Vợt Đồ, game Thủy Hử, Phương Thiên Họa Kích, Phong Vân game... Năm 2016 GHD triển khai các sản phẩm về Công nghệ thông tin với nhiều phần mềm tiện ích cho doanh nghiệp như: WMS, One Office, O2O, FMS, HRM, CRM... Năm 2018, cùng với sự phát triển của Cách mạng Công nghệ 4.0, GHD đã cho ra mắt nhiều giải pháp tiếp thị trực tuyến như: Quảng cáo Google, quảng cáo Facebok, Tối ưu hóa website (SEO), Tối ưu lượt cài ứng dụng (ASO)...",
+  "section": [
+    {
+      "title": "Why Antd?",
+      "content": "Ant Design is a React UI library that has a lot of easy-to-use components for building elegant UI.",
+      "icon": "notes.svg"
+    },
+    {
+      "title": "Why styled-components?",
+      "content": "Styled Components gives you total control over your components.",
+      "icon": "notes.svg"
+    }
+  ]
+}
