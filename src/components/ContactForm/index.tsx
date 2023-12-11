@@ -9,7 +9,7 @@ import { useState } from "react";
 const { TextArea } = Input;
 import './style.scss'
 
-const Contact = ({ title, content, id, t }: ContactProps) => {
+const Recruitment = ({ title, content, id }: any) => {
   // const { values, errors, handleChange, handleSubmit } = useForm(validate);
   const [form] = Form.useForm()
   const [initalData, setInitialData] = useState({
@@ -78,6 +78,7 @@ const Contact = ({ title, content, id, t }: ContactProps) => {
       form={form}
       // labelCol={{ style: { width: 120 } }}
       layout="vertical"
+      id="recruitment"
 
     >
       <Row justify="space-between" align="middle">
@@ -96,7 +97,7 @@ const Contact = ({ title, content, id, t }: ContactProps) => {
                   message: 'Bắt buộc!',
                 },
               ]}>
-              <Input className="w-[100%]"/>
+              <Input className="w-[100%]" />
             </Form.Item>
           </Col>
           <Col span={24}>
@@ -159,4 +160,4 @@ const Contact = ({ title, content, id, t }: ContactProps) => {
   );
 };
 
-export default withTranslation()(Contact);
+export default Recruitment;
