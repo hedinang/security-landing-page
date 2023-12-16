@@ -1,9 +1,8 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable import/first */
 import { Row, Col, Form, Input, Button } from "antd";
 
-import { withTranslation } from "react-i18next";
-import { Slide, Zoom } from "react-awesome-reveal";
-import { ContactProps, ValidationTypeProps } from "./types";
+import { Slide } from "react-awesome-reveal";
 import Block from "../Block";
 import { useState } from "react";
 const { TextArea } = Input;
