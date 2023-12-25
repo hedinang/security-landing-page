@@ -6,7 +6,7 @@
 
     h6 {
         margin-bottom: 20px;
-        font-family: 'Motiva Sans Bold', serif;
+        font-family: "Motiva Sans Bold", serif;
         color: #18216d;
         font-size: 56px;
         line-height: 1.18;
@@ -17,6 +17,18 @@
 
         @media only screen and (max-width: 414px) {
             font-size: 32px;
+        }
+    }
+
+    .contact-content {
+        display: flex;
+
+        @media only screen and (max-width: 1400px) {
+            flex-direction: column;
+        }
+
+        @media only screen and (max-width: 1400px) {
+            justify-content: space-between;
         }
     }
 

@@ -5,14 +5,24 @@
     padding: 20px;
     border-radius: 5px;
 
-    .ant-form-item .ant-form-item-label>label {
+    .ant-form-item .ant-form-item-label > label {
         color: white !important;
         // font-size: 15px;
     }
     .ant-input:focus-within {
         border-color: white;
         background-color: white;
-        box-shadow: none
+        box-shadow: none;
     }
-   
+}
+
+.map {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .map-card {
+        width: 800px !important;
+        height: 400px !important;
+        overflow: hidden;
+    }
 }
