@@ -22,14 +22,14 @@
 
     .contact-content {
         display: flex;
+        flex-direction: column;
+        // @media only screen and (max-width: 100px) {
+        //     flex-direction: column;
+        // }
 
-        @media only screen and (max-width: 1400px) {
-            flex-direction: column;
-        }
-
-        @media only screen and (max-width: 1400px) {
-            justify-content: space-between;
-        }
+        // @media only screen and (max-width: 1200px) {
+        //     justify-content: space-between;
+        // }
     }
 
     .contact-card {

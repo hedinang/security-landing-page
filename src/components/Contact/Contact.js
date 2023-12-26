@@ -67,7 +67,7 @@ const Contact = () => {
                     >
                         <Map
                             mapLib={maplibregl}
-                            mapStyle='https://api.maptiler.com/maps/topo/style.json?key=6XB2ErrAynZGeRhk684q'
+                            mapStyle='https://api.maptiler.com/maps/hybrid/style.json?key=6XB2ErrAynZGeRhk684q'
                         />
                     </DeckGL>
                 </Card >

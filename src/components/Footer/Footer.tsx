@@ -2,7 +2,7 @@ import { SvgIcon } from "../../common/SvgIcon"
 import './style.scss'
 const Footer = () => {
     return <div className="footer">
-        Copyright © 2023 TP Security. All Rights Reserved.
+        <div>Copyright © 2023 TP Security. All Rights Reserved.</div>
         <div className="social-media">
             <a
                 href="https://www.facebook.com/AFCVN"
