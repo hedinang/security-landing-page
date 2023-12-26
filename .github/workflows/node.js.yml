@@ -22,7 +22,7 @@ jobs:
       - name: Generate build
         run: npm run build
       - name: move to build
-        run: cd ..
+        run: cd ../../
       - name: pwd
         run: pwd
       - name: delivery build to 
