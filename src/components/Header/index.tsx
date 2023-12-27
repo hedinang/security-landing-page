@@ -75,7 +75,7 @@ const Header = ({ t }: { t: TFunction }) => {
           <Col style={{ marginBottom: "2.5rem" }}>
             <Label onClick={toggleButton}>
               <Col span={12}>
-                <Menu>Menu</Menu>
+                {/* <Menu>Menu</Menu> */}
               </Col>
               <Col span={12}>
                 <Outline />
