@@ -1,0 +1,12 @@
+﻿{
+  "repositoryName": "hedinang/security-landing-page",
+  "pipelineDirectory": "security-landing-page",
+  "workspaceDirectory": "security-landing-page/security-landing-page",
+  "repositories": {
+    "hedinang/security-landing-page": {
+      "repositoryPath": "security-landing-page/security-landing-page",
+      "lastRunOn": "12/26/2023 21:25:59 +07:00"
+    }
+  },
+  "lastRunOn": "12/26/2023 21:25:59 +07:00"
+}

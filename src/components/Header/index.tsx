@@ -1,9 +1,10 @@
+/* eslint-disable jsx-a11y/alt-text */
 import { useState } from "react";
 import { Row, Col, Drawer } from "antd";
 import { withTranslation, TFunction } from "react-i18next";
 import Container from "../../common/Container";
-import { SvgIcon } from "../../common/SvgIcon";
-import { Button } from "../../common/Button";
+// import { SvgIcon } from "../../common/SvgIcon";
+import logo from "../../../public/img/icons/LogoTPSS_Trong.jpg";
 import {
   HeaderSection,
   LogoContainer,
@@ -33,25 +34,17 @@ const Header = ({ t }: { t: TFunction }) => {
     };
     return (
       <>
-        <CustomNavLinkSmall onClick={() => scrollTo("about")}>
+        <CustomNavLinkSmall onClick={() => scrollTo("intro")}>
           <Span>{t("Giới thiệu")}</Span>
         </CustomNavLinkSmall>
-        <CustomNavLinkSmall onClick={() => scrollTo("mission")}>
-          <Span>{t("Sứ mệnh")}</Span>
-        </CustomNavLinkSmall>
-        <CustomNavLinkSmall onClick={() => scrollTo("product")}>
+        <CustomNavLinkSmall onClick={() => scrollTo("service")}>
           <Span>{t("Dịch vụ")}</Span>
         </CustomNavLinkSmall>
         <CustomNavLinkSmall onClick={() => scrollTo("recruitment")}>
           <Span>{t("Tuyển dụng")}</Span>
         </CustomNavLinkSmall>
-        <CustomNavLinkSmall
-          style={{ width: "180px" }}
-          onClick={() => scrollTo("contact")}
-        >
-          <Span>
-            <Button>{t("Liên hệ")}</Button>
-          </Span>
+        <CustomNavLinkSmall onClick={() => scrollTo("contact")}>
+          <Span>{t("Liên hệ")}</Span>
         </CustomNavLinkSmall>
       </>
     );
@@ -62,7 +55,7 @@ const Header = ({ t }: { t: TFunction }) => {
       <Container>
         <Row justify="space-between">
           <LogoContainer to="/" aria-label="homepage">
-            <SvgIcon src="logo.svg" width="101px" height="64px" />
+            <img className="h-[64px]" src="/img/icons/LogoTPSS_Trong.jpg"/>
           </LogoContainer>
           <NotHidden>
             <MenuItem />

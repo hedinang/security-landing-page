@@ -12,12 +12,12 @@ const ICON_MAPPING = {
 };
 
 const data = [
-    { name: 'Colma (COLM)', address: '376 buoi', exits: 4214, coordinates: [105.81465008529332, 21.04087243204058] },
+    { name: 'Colma (COLM)', address: '376 buoi', exits: 4214, coordinates: [105.81297856441829, 21.03616119000164] },
 ]
 const Contact = () => {
     const [viewState, setViewState] = useState({
-        longitude: 105.81465008529332,
-        latitude: 21.04087243204058,
+        longitude: 105.81297856441829,
+        latitude: 21.03616119000164,
         zoom: 15
     });
     const layer = new IconLayer({
@@ -34,25 +34,31 @@ const Contact = () => {
         getColor: d => [Math.sqrt(d.exits), 140, 0]
     });
     return <div className="contact" id="contact">
-        <h6>Liên hệ</h6>
+        <h6 className="text-center mb-[30px]">Liên hệ</h6>
         <div className="contact-content">
             <div>
                 <Card hoverable>
                     <div className="contact-card">
                         <GlobalOutlined className="text-[30px] text-[#42baff]" />
-                        <div>Trụ sở: Tầng 5 tòa nhà N2 đường Bưởi - Vĩnh Phúc - Ba Đình - Hà Nội</div>
+                        <div>Trụ sở chính: Số 25 Kim Mã Thượng, Phường Cống Vị, Quận Ba Đình, Thành phố Hà Nội</div>
+                    </div>
+                </Card>
+                <Card hoverable>
+                    <div className="contact-card">
+                        <GlobalOutlined className="text-[30px] text-[#42baff]" />
+                        <div>Chi nhánh Sài Gòn: 122/4 Yên Thế, Phường 2, Quận Tân Bình, Thành phố Hồ Chí Minh</div>
                     </div>
                 </Card>
                 <Card hoverable>
                     <div className="contact-card">
                         <MailOutlined className="text-[30px] text-[#42baff]" />
-                        <div>Email: info@tpss.vn</div>
+                        <div>Email: <span className="text-[#0c5db3]">info@tpss.vn</span></div>
                     </div>
                 </Card>
                 <Card hoverable>
                     <div className="contact-card">
                         <PhoneOutlined className="text-[30px] text-[#42baff]" />
-                        <div>Số điện thoại: 0392200524</div>
+                        <div>Số điện thoại: <span className="text-[#0c5db3]">0965377037 - 0984964565 - 0984974445</span></div>
                     </div>
                 </Card>
             </div>

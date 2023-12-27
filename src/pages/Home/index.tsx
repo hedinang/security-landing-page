@@ -7,6 +7,7 @@ import ContactContent from "../../content/ContactContent.json";
 import Contact from "../../components/Contact/Contact";
 import ContentBlock from "../../components/ContentBlock";
 import Recruitment from "../../components/ContactForm";
+import Service from "../../components/Service/Service";
 
 
 const Container = lazy(() => import("../../common/Container"));
@@ -29,7 +30,8 @@ const Home = () => {
         content={MiddleBlockContent.text}
         button={MiddleBlockContent.button}
       /> */}
-      <ContentBlock
+      <Service/>
+      {/* <ContentBlock
         direction="left"
         title={AboutContent.title}
         content={AboutContent.text}
@@ -51,7 +53,7 @@ const Home = () => {
         section={ProductContent.section}
         icon="waving.svg"
         id="product"
-      />
+      /> */}
       <Recruitment
         title={ContactContent.title}
         content={ContactContent.text}

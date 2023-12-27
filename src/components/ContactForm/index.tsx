@@ -80,15 +80,12 @@ const Recruitment = ({ title, content, id }: any) => {
       id="recruitment"
 
     >
-      <Row justify="space-between" align="middle">
-        <Col lg={12} md={11} sm={24} xs={24}>
-          <Slide direction="left" triggerOnce>
-            <Block title={title} content={content} />
-          </Slide>
-        </Col>
-        <Col lg={12} md={12} sm={24} xs={24} className="register-form">
+      <h6 className="text-center mb-[50px]">Tuyển dụng</h6>
+      <div className="text-[#18216D] text-[21px]" >Gửi thông tin theo mẫu để ứng tuyển</div>
+      <Row className="contact-form mb-[50px]">
+        <Col lg={11} md={11} sm={24} xs={24} className="register-form">
           <Col span={24}>
-            <Form.Item label="Số chứng minh thư"
+            <Form.Item label="Họ và tên"
               name="identification"
               rules={[
                 {
@@ -100,20 +97,8 @@ const Recruitment = ({ title, content, id }: any) => {
             </Form.Item>
           </Col>
           <Col span={24}>
-            <Form.Item label="Tên"
+            <Form.Item label="Năm sinh"
               name="name"
-              rules={[
-                {
-                  required: true,
-                  message: 'Bắt buộc!',
-                },
-              ]}>
-              <Input />
-            </Form.Item>
-          </Col>
-          <Col span={24}>
-            <Form.Item label="Tuổi"
-              name="age"
               rules={[
                 {
                   required: true,
@@ -148,12 +133,87 @@ const Recruitment = ({ title, content, id }: any) => {
             </Form.Item>
           </Col>
           <Col span={24}>
+            <Form.Item label="Vị trí ứng tuyển"
+              name="age"
+              rules={[
+                {
+                  required: true,
+                  message: 'Bắt buộc!',
+                },
+              ]}>
+              <Input />
+            </Form.Item>
+          </Col>
+          <Col span={24}>
+            <Form.Item label="Vị trí ứng tuyển"
+              name="age"
+              rules={[
+                {
+                  required: true,
+                  message: 'Bắt buộc!',
+                },
+              ]}>
+              <Input />
+            </Form.Item>
+          </Col>
+        </Col>
+        <Col lg={2} md={2} />
+        <Col lg={11} md={11} sm={24} xs={24} className="register-form">
+          <Col span={24}>
+            <Form.Item label="Địa điểm làm việc mong muốn"
+              name="age"
+              rules={[
+                {
+                  required: true,
+                  message: 'Bắt buộc!',
+                },
+              ]}>
+              <Input />
+            </Form.Item>
+          </Col>
+          <Col span={24}>
+            <Form.Item label="Thời gian làm việc mong muốn"
+              name="age"
+              rules={[
+                {
+                  required: true,
+                  message: 'Bắt buộc!',
+                },
+              ]}>
+              <Input />
+            </Form.Item>
+          </Col>
+          <Col span={24}>
+            <Form.Item label="Thu nhập mong muốn"
+              name="age"
+              rules={[
+                {
+                  required: true,
+                  message: 'Bắt buộc!',
+                },
+              ]}>
+              <Input />
+            </Form.Item>
+          </Col>
+          <Col span={24}>
+            <Form.Item label="Chỗ ăn ở mong muốn"
+              name="age"
+              rules={[
+                {
+                  required: true,
+                  message: 'Bắt buộc!',
+                },
+              ]}>
+              <Input />
+            </Form.Item>
+          </Col>
+          <Col span={24}>
             <Form.Item label="Tin nhắn" name="message">
               <TextArea />
             </Form.Item>
           </Col>
-          <Button className="bg-[white] w-[100px]">Gửi</Button>
         </Col>
+        <Button className="bg-[white] w-[100px]">Gửi</Button>
       </Row>
     </Form>
   );
