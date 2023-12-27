@@ -7,10 +7,10 @@ export default function Service() {
     return <div id="service" className="services">
         <h6 className="text-center mb-[50px]">Dịch vụ và báo giá</h6>
         <Row className="mb-[50px]">
-            <Col span={12} className="content">
+            <Col lg={12} md={12} sm={24} xs={24} className="content">
                 {services.slice(0, services.length / 2).map(service => <div>{service}</div>)}
             </Col>
-            <Col span={12} className="content">
+            <Col lg={12} md={12} sm={24} xs={24} className="content">
                 {services.slice(services.length / 2, services.length - 1).map(service => <div>{service}</div>)}
             </Col>
         </Row>
