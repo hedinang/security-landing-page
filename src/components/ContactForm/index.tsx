@@ -1,9 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable import/first */
-import { Row, Col, Form, Input, Button } from "antd";
-
-import { Slide } from "react-awesome-reveal";
-import Block from "../Block";
+import { Row, Col, Form, Input, Button, Select, DatePicker } from "antd";
 import { useState } from "react";
 const { TextArea } = Input;
 import './style.scss'
@@ -12,13 +9,58 @@ const Recruitment = ({ title, content, id }: any) => {
   // const { values, errors, handleChange, handleSubmit } = useForm(validate);
   const [form] = Form.useForm()
   const [initalData, setInitialData] = useState({
-    identification: '',
     name: '',
     age: '',
     gender: '',
     phone: '',
-    message: ''
+    position: '',
+    location: '',
+    workingTime: 'full',
+    wage: '',
+    support: 'self'
   })
+
+  const [workingTimeList, setWorkingTimeList] = useState([{
+    label: '24/24',
+    value: 'full',
+  },
+  {
+    label: '24/24 cách nhật',
+    value: 'full_other'
+  },
+  {
+    label: '12/24 ngày',
+    value: 'half_day'
+  },
+  {
+    label: '12/24 đêm',
+    value: 'half_night'
+  },
+  {
+    label: 'Hành chính',
+    value: 'working'
+  }, {
+    label: 'Ca làm việc khác',
+    value: 'other'
+  }])
+
+  const [supportList, setSupportList] = useState([{
+    label: 'Tự túc',
+    value: 'self'
+
+  },
+  {
+    label: 'Nhà đội của Công ty',
+    value: 'company'
+  },
+  {
+    label: 'Tại vị trí làm việc',
+    value: 'working-place'
+  },
+  {
+    label: 'Khác',
+    value: 'other'
+  }])
   const [loading, setLoading] = useState(false)
 
   const onFinish = async (values: any) => {
@@ -98,14 +140,14 @@ const Recruitment = ({ title, content, id }: any) => {
           </Col>
           <Col span={24}>
             <Form.Item label="Năm sinh"
-              name="name"
+              name="age"
               rules={[
                 {
                   required: true,
                   message: 'Bắt buộc!',
                 },
               ]}>
-              <Input />
+              <DatePicker picker="year" placeholder="Chọn năm sinh"/>
             </Form.Item>
           </Col>
           <Col span={24}>
@@ -129,19 +171,11 @@ const Recruitment = ({ title, content, id }: any) => {
                   message: 'Bắt buộc!',
                 },
               ]}>
-              <Input />
-            </Form.Item>
-          </Col>
-          <Col span={24}>
-            <Form.Item label="Vị trí ứng tuyển"
-              name="age"
-              rules={[
-                {
-                  required: true,
-                  message: 'Bắt buộc!',
-                },
-              ]}>
-              <Input />
+              <Input onKeyPress={(event) => {
+                if (!/[0-9.]/.test(event.key)) {
+                  event.preventDefault();
+                }
+              }} />
             </Form.Item>
           </Col>
           <Col span={24}>
@@ -168,19 +202,21 @@ const Recruitment = ({ title, content, id }: any) => {
                   message: 'Bắt buộc!',
                 },
               ]}>
-              <Input />
+              <TextArea />
             </Form.Item>
           </Col>
           <Col span={24}>
             <Form.Item label="Thời gian làm việc mong muốn"
-              name="age"
+              name="workingTime"
               rules={[
                 {
                   required: true,
                   message: 'Bắt buộc!',
                 },
               ]}>
-              <Input />
+              <Select
+                options={workingTimeList}
+              />
             </Form.Item>
           </Col>
           <Col span={24}>
@@ -197,14 +233,16 @@ const Recruitment = ({ title, content, id }: any) => {
           </Col>
           <Col span={24}>
             <Form.Item label="Chỗ ăn ở mong muốn"
-              name="age"
+              name="support"
               rules={[
                 {
                   required: true,
                   message: 'Bắt buộc!',
                 },
               ]}>
-              <Input />
+              <Select
+                options={supportList}
+              />
             </Form.Item>
           </Col>
           <Col span={24}>

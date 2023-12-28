@@ -3,8 +3,6 @@ import { useState } from "react";
 import { Row, Col, Drawer } from "antd";
 import { withTranslation, TFunction } from "react-i18next";
 import Container from "../../common/Container";
-// import { SvgIcon } from "../../common/SvgIcon";
-import logo from "../../../public/img/icons/LogoTPSS_Trong.jpg";
 import {
   HeaderSection,
   LogoContainer,
