@@ -227,8 +227,6 @@ export default function Service() {
         form={form}
         // labelCol={{ style: { width: 120 } }}
         layout="vertical"
-        id="recruitment"
-
     >
         <div id="service" className="services">
             <h6 className="text-center mb-[50px]">Dịch vụ và báo giá</h6>
