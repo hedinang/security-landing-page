@@ -15,7 +15,7 @@ import {
   Span,
 } from "./styles";
 
-const Header = ({ t }: { t: TFunction }) => {
+const Header = ({ t }) => {
   const [visible, setVisibility] = useState(false);
 
   const toggleButton = () => {
@@ -23,8 +23,8 @@ const Header = ({ t }: { t: TFunction }) => {
   };
 
   const MenuItem = () => {
-    const scrollTo = (id: string) => {
-      const element = document.getElementById(id) as HTMLDivElement;
+    const scrollTo = (id) => {
+      const element = document.getElementById(id) ;
       element.scrollIntoView({
         behavior: "smooth",
       });

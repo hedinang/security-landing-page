@@ -26,11 +26,12 @@
     "react-icons": "^4.12.0",
     "react-map-gl": "^7.1.7",
     "react-number-format": "^5.3.1",
-    "react-router-dom": "^5.3.4",
+    "react-router-dom": "^6.16.0",
     "react-scripts": "5.0.1",
     "sass": "^1.69.5",
     "styled-components": "^5.3.11",
-    "typescript": "^4.9.5"
+    "typescript": "^4.9.5",
+    "js-cookie": "^3.0.5"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -39,7 +40,12 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": "react-app",
+    "rules": {
+      "jsx-a11y/anchor-is-valid": "off",
+      "no-unused-vars": "off",
+      "react-hooks/exhaustive-deps": "off"
+    }
   },
   "browserslist": {
     "production": [

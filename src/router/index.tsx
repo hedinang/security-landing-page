@@ -1,30 +1,21 @@
-import { lazy, Suspense } from "react";
-import { Switch, Route } from "react-router-dom";
-import Header from "../components/Header";
-import routes from "./config";
-import { Styles } from "../styles/styles";
-import Footer from "../components/Footer/Footer";
+/* eslint-disable react/react-in-jsx-scope */
+import { createBrowserRouter } from 'react-router-dom';
+import PublicLayout from '../components/layouts/PublicLayout';
+import Login from '../pages/Login/Login';
+import Home from '../pages/Home/Home';
 
-const Router = () => {
-  return (
-    <Suspense fallback={null}>
-      <Styles />
-      <Header />
-      <Switch>
-        {routes.map((routeItem) => {
-          return (
-            <Route
-              key={routeItem.component}
-              path={routeItem.path}
-              exact={routeItem.exact}
-              component={lazy(() => import(`../pages/${routeItem.component}`))}
-            />
-          );
-        })}
-      </Switch>
-      <Footer/>
-    </Suspense>
-  );
-};
-
-export default Router;
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: (
+      <PublicLayout>
+        <Home />
+      </PublicLayout>
+    ),
+  },
+  {
+    path: 'login',
+    element: <Login />,
+  },
+]);
+export default router;
