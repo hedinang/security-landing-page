@@ -22,11 +22,9 @@ jobs:
       #   run: pwd
       # - name: Install dependencies
       #   run: npm install    
-      # - name: Generate build
-        # working-directory: /home/dung/Project/tpsecurity/security-landing-page
-        # working-directory: /Users/dungtran/Project/outsource/security-landing-page
-        # run: npm run build
+      - name: Generate build
+        working-directory: /home/dung/Project/tpsecurity/FE/security-landing-page
+        run: npm run build
       - name: delivery build to 
-        # working-directory: /home/dung/Project/tpsecurity
-        working-directory: /Users/dungtran/Project/outsource
-        run: scp -r -i "tpsecurity.pem" ./security-landing-page/build/*  ubuntu@ec2-13-213-60-120.ap-southeast-1.compute.amazonaws.com:/var/www/tpsecurity/html
+        working-directory: /home/dung/Project/tpsecurity
+        run: scp -r -i "tpsecurity.pem" ./FE/security-landing-page/build/*  ubuntu@ec2-13-213-60-120.ap-southeast-1.compute.amazonaws.com:/var/www/tpsecurity/html
