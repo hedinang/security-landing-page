@@ -10,13 +10,13 @@ import Footer from "../Footer/Footer";
 import { Styles } from "../../styles/styles";
 
 const PublicLayout = ({ children }) => {
-    const token = Cookies.get('access_token')
-    const navigate = useNavigate();
-    useEffect(() => {
-        if (token) {
-            navigate('/dashboard', { replace: true });
-        }
-    }, [token]);
+    // const token = Cookies.get('access_token')
+    // const navigate = useNavigate();
+    // useEffect(() => {
+    //     if (token) {
+    //         navigate('/dashboard', { replace: true });
+    //     }
+    // }, [token]);
     return <Space direction="vertical" style={{ width: '100%' }} size={[0, 48]}>
         <Layout>
             <Layout.Content >
