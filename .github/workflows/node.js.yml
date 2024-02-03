@@ -22,10 +22,10 @@ jobs:
       #   run: pwd
       # - name: Install dependencies
       #   run: npm install    
-      # - name: Generate build
-        # working-directory: /home/dung/Project/tpsecurity/security-landing-page
+      - name: Generate build
+        working-directory: /home/dung/Project/tpsecurity/FE/security-landing-page
         # working-directory: /Users/dungtran/Project/outsource/security-landing-page
-        # run: npm run build
+        run: npm run build
       - name: delivery build to 
         # working-directory: /home/dung/Project/tpsecurity
         working-directory: /Users/dungtran/Project/outsource
