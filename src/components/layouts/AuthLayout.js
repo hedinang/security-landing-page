@@ -8,9 +8,11 @@ import { useEffect } from 'react';
 import Cookies from "js-cookie";
 import { toast } from 'react-toastify';
 import jwtDecode from 'jwt-decode';
-import SideBar from '../../components/sideBar/index'
+// import SideBar from '../../components/sideBar/index'
 import Header from '../header/index';
-import { SideBarDrawer } from '../sideBar/sideBarDrawer';
+import SideBar from '../sideBar';
+import ManagementHeader from '../header/ManagementHeader';
+// import { SideBarDrawer } from '../sideBar/sideBarDrawer';
 
 
 const AuthLayout = ({ children }) => {
@@ -48,10 +50,10 @@ const AuthLayout = ({ children }) => {
             <Space direction="vertical" style={{ width: '100%' }} size={[0, 48]}>
                 <Layout>
                     <SideBar />
-                    <SideBarDrawer/>
+                    {/* <SideBarDrawer/> */}
                     <Layout.Content >
-                        <Header />
-                        <Outlet />
+                        <ManagementHeader />
+                        {children}
                     </Layout.Content>
                 </Layout>
             </Space>

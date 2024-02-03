@@ -1,115 +1,64 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable import/first */
-import { Row, Col, Form, Input, Button, Select, DatePicker } from "antd";
+import { Row, Col, Form, Input, Button, Select, DatePicker, Modal, Spin } from "antd";
 import { useState } from "react";
 const { TextArea } = Input;
-import './style.scss'
+import { useNavigate } from 'react-router-dom';
+import { toast } from "react-toastify";
+import { NumericFormat } from 'react-number-format';
 
-const Recruitment = ({ title, content, id }: any) => {
+import './style.scss'
+import apiFactory from "../../api";
+import { GENDER_LIST, POSITION_LIST, SUPPORT_LIST, WORKING_TIME_LIST } from "../../config/Constant";
+
+const Recruitment = ({ title, content, id }) => {
+  const navigate = useNavigate()
   // const { values, errors, handleChange, handleSubmit } = useForm(validate);
   const [form] = Form.useForm()
   const [initalData, setInitialData] = useState({
     name: '',
-    age: '',
+    yearOfBirth: '',
     gender: '',
     phone: '',
     position: '',
     location: '',
-    workingTime: 'full',
+    workingTime: 'FULL',
     wage: '',
-    support: 'self'
+    support: 'SELF',
+    message: ''
   })
 
-  const [workingTimeList, setWorkingTimeList] = useState([{
-    label: '24/24',
-    value: 'full',
-  },
-  {
-    label: '24/24 cách nhật',
-    value: 'full_other'
-  },
-  {
-    label: '12/24 ngày',
-    value: 'half_day'
-  },
-  {
-    label: '12/24 đêm',
-    value: 'half_night'
-  },
-  {
-    label: 'Hành chính',
-    value: 'working'
-  }, {
-    label: 'Ca làm việc khác',
-    value: 'other'
-  }])
+  const [workingTimeList, setWorkingTimeList] = useState(WORKING_TIME_LIST)
 
-  const [supportList, setSupportList] = useState([{
-    label: 'Tự túc',
-    value: 'self'
+  const [supportList, setSupportList] = useState(SUPPORT_LIST)
 
-  },
-  {
-    label: 'Nhà đội của Công ty',
-    value: 'company'
-  },
-  {
-    label: 'Tại vị trí làm việc',
-    value: 'working-place'
-  },
-  {
-    label: 'Khác',
-    value: 'other'
-  }])
+  const [genderList, setGenderList] = useState(GENDER_LIST)
+
+  const [positionList, setPositionList] = useState(POSITION_LIST)
+
   const [loading, setLoading] = useState(false)
 
-  const onFinish = async (values: any) => {
-    let result
+  const onFinish = async (values) => {
     setLoading(true)
-    // if (different.type === 'edit') {
-    //     result = await apiFactory.songApi.update({
-    //         id: param?.id,
-    //         name: values?.name,
-    //         author: values?.author?.value,
-    //         category: values?.category?.map(e => e.value),
-    //         image: values?.img?.file,
-    //         image_url: values?.img?.url,
-    //         short_audio: values?.short_song?.file,
-    //         short_audio_url: values?.short_song?.url,
-    //         full_audio: values?.full_song?.file,
-    //         full_audio_url: values?.full_song?.url,
-    //         duration: initalData.duration,
-    //         unit_price: typeof (values?.unitPrice) === 'number' ? values?.unitPrice : Number(values?.unitPrice?.replaceAll(',', ''))
-    //     })
-    // }
+    const result = await apiFactory.applicantApi.create({
+      name: values?.name,
+      year_of_birth: values?.yearOfBirth?.$y,
+      gender: values?.gender,
+      phone: values?.phone,
+      position: values?.position,
+      location: values?.location,
+      working_time: values?.workingTime,
+      wage: typeof (values?.wage) === 'number' ? values?.wage : Number(values?.wage?.replaceAll(',', '')),
+      support: values?.support,
+      message: values?.message,
+    })
+    setLoading(false)
 
-    // if (different.type === 'add') {
-    //     result = await apiFactory.songApi.create({
-    //         name: values?.name,
-    //         author: values?.author?.value,
-    //         category: values?.category.map(e => e.value),
-    //         image: values?.img.file,
-    //         short_audio: values?.short_song.file,
-    //         full_audio: values?.full_song.file,
-    //         duration: initalData.duration,
-    //         unit_price: typeof (values?.unitPrice) === 'number' ? values?.unitPrice : Number(values?.unitPrice?.replaceAll(',', ''))
-    //     })
-    // }
-    // setLoading(false)
-
-    // if (result?.status === 200) {
-    //     if (different.type === 'add') {
-    //         toast.success('Tạo danh mục nhạc thành công')
-    //     }
-
-    //     if (different.type === 'edit') {
-    //         toast.success('Cập nhật danh mục nhạc thành công')
-    //     }
-
-    //     navigate('/song/list')
-    // } else {
-    //     toast.error(result?.message)
-    // }
+    if (result?.status === 200) {
+      toast.success('Tạo yêu cầu thành công')
+    } else {
+      toast.error(result?.message)
+    }
   }
 
   return (
@@ -128,7 +77,7 @@ const Recruitment = ({ title, content, id }: any) => {
         <Col lg={11} md={11} sm={24} xs={24} className="register-form">
           <Col span={24}>
             <Form.Item label="Họ và tên"
-              name="identification"
+              name="name"
               rules={[
                 {
                   required: true,
@@ -140,14 +89,14 @@ const Recruitment = ({ title, content, id }: any) => {
           </Col>
           <Col span={24}>
             <Form.Item label="Năm sinh"
-              name="age"
+              name="yearOfBirth"
               rules={[
                 {
                   required: true,
                   message: 'Bắt buộc!',
                 },
               ]}>
-              <DatePicker picker="year" placeholder="Chọn năm sinh"/>
+              <DatePicker picker="year" placeholder="Chọn năm sinh" />
             </Form.Item>
           </Col>
           <Col span={24}>
@@ -159,11 +108,13 @@ const Recruitment = ({ title, content, id }: any) => {
                   message: 'Bắt buộc!',
                 },
               ]}>
-              <Input />
+              <Select
+                options={genderList}
+              />
             </Form.Item>
           </Col>
           <Col span={24}>
-            <Form.Item label="Số điện thoại"
+            <Form.Item label="Số điện thoại (Nhập số)"
               name="phone"
               rules={[
                 {
@@ -180,14 +131,16 @@ const Recruitment = ({ title, content, id }: any) => {
           </Col>
           <Col span={24}>
             <Form.Item label="Vị trí ứng tuyển"
-              name="age"
+              name="position"
               rules={[
                 {
                   required: true,
                   message: 'Bắt buộc!',
                 },
               ]}>
-              <Input />
+              <Select
+                options={positionList}
+              />
             </Form.Item>
           </Col>
         </Col>
@@ -195,7 +148,7 @@ const Recruitment = ({ title, content, id }: any) => {
         <Col lg={11} md={11} sm={24} xs={24} className="register-form">
           <Col span={24}>
             <Form.Item label="Địa điểm làm việc mong muốn"
-              name="age"
+              name="location"
               rules={[
                 {
                   required: true,
@@ -220,15 +173,25 @@ const Recruitment = ({ title, content, id }: any) => {
             </Form.Item>
           </Col>
           <Col span={24}>
-            <Form.Item label="Thu nhập mong muốn"
-              name="age"
+            <Form.Item label="Thu nhập mong muốn (Nhập số VNĐ)"
+              name="wage"
               rules={[
                 {
                   required: true,
                   message: 'Bắt buộc!',
                 },
               ]}>
-              <Input />
+              <NumericFormat
+                onKeyPress={(event) => {
+                  if (!/[0-9.]/.test(event.key)) {
+                    event.preventDefault();
+                  }
+                }}
+                // value={value?.unitPrice} disabled={difference.type === 'view' || !value?.unitPriceSetting}
+                // onChange={onChangeUnitPrice} 
+                customInput={Input}
+                thousandsGroupStyle="thousand" thousandSeparator="," decimalScale={2}
+              />
             </Form.Item>
           </Col>
           <Col span={24}>
@@ -251,8 +214,12 @@ const Recruitment = ({ title, content, id }: any) => {
             </Form.Item>
           </Col>
         </Col>
-        <Button className="bg-[white] w-[100px]">Gửi</Button>
+        <Button className="bg-[white] w-[100px]" htmlType="submit">Gửi</Button>
       </Row>
+      <Modal title="Basic Modal" open={loading}>
+        Đang gửi ...
+        <Spin />
+      </Modal>
     </Form>
   );
 };
