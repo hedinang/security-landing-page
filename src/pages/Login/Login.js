@@ -47,7 +47,7 @@ export default function Login() {
                     <Input type="password" disabled={loading} />
                 </Form.Item>
                 <Form.Item>
-                    <Button className="button w-[100px]" htmlType="submit">
+                    <Button className="button w-[100px] bg-[blue] text-[white]" htmlType="submit">
                         {loading ? <Spin indicator={<LoadingOutlined style={{ fontSize: 24 }} spin />} /> : 'Đăng nhập'}
                     </Button>
                 </Form.Item>
