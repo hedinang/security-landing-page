@@ -8,6 +8,7 @@ import { ApplicantList } from '../pages/Applicant/ApplicantList';
 import { ServiceList } from '../pages/Service/ServiceList';
 import ServiceDetail from '../pages/Service/ServiceDetail';
 import { RequirementList } from '../pages/Requirement/RequirementList';
+import SocialNetwork from '../pages/SocialNetwork/SocialNetwork';
 
 const router = createBrowserRouter([
   {
@@ -66,6 +67,18 @@ const router = createBrowserRouter([
         path: '/requirement/list',
         element: (
           <RequirementList />
+        ),
+      },
+      {
+        path: '/social',
+        element: (
+          <SocialNetwork different={{ type: 'view' }} />
+        ),
+      },
+      {
+        path: '/social/edit',
+        element: (
+          <SocialNetwork different={{ type: 'edit' }} />
         ),
       }
     ]

@@ -1,6 +1,24 @@
+import { useEffect, useState } from "react"
 import { SvgIcon } from "../../common/SvgIcon"
 import './style.scss'
+import apiFactory from "../../api"
 const Footer = () => {
+    const [social, setSocial] = useState({})
+
+    const fetchData = async () => {
+        const result = await apiFactory.socialApi.getList()
+        setSocial({
+            facebook: result?.data?.facebook,
+            zalo: result?.data?.zalo,
+            youtube: result?.data?.youtube,
+        })
+    }
+    useEffect(() => {
+        fetchData()
+
+    }, [])
+
+
     return <div className="footer">
         <div className="text-start">
             <div>Mã số thuế: <span className="text-[#0c5db3]">0110066356</span></div>
@@ -9,7 +27,7 @@ const Footer = () => {
         </div>
         <div className="social-media">
             <a
-                href="https://www.facebook.com/AFCVN"
+                href={social?.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
             >
@@ -20,7 +38,7 @@ const Footer = () => {
                 />
             </a>
             <a
-                href="https://zalo.me/g/qweclc619"
+                href={social?.zalo}
                 target="_blank"
                 rel="noopener noreferrer"
             >
@@ -31,7 +49,7 @@ const Footer = () => {
                 />
             </a>
             <a
-                href="https://www.youtube.com/watch?v=xBlEQl0g_F8&ab_channel=SAPATV"
+                href={social?.youtube}
                 target="_blank"
                 rel="noopener noreferrer"
             >

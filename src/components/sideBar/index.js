@@ -1,13 +1,12 @@
 /* eslint-disable react/react-in-jsx-scope */
-import { DashboardOutlined, GiftOutlined, UnorderedListOutlined, UserOutlined } from '@ant-design/icons';
 import { Layout, Menu } from 'antd';
 import { useMemo } from 'react';
-import { BsFillCartFill } from 'react-icons/bs';
 import { SiAdguard } from "react-icons/si";
 import { HiOutlineLogout, HiUserGroup } from 'react-icons/hi';
 import { PiPersonArmsSpreadDuotone } from "react-icons/pi";
 import { SlPaperPlane } from "react-icons/sl";
-import { SiMinutemailer } from 'react-icons/si';
+import { PiShareNetwork } from "react-icons/pi";
+
 import { Link, useNavigate } from 'react-router-dom';
 
 
@@ -50,7 +49,7 @@ const SideBar = () => {
 
                 getItem(<Link to={'/service/list'}>{keyMenuItem.SERVICE_LIST.name}</Link>, keyMenuItem.SERVICE_LIST.key, <SiAdguard />),
                 // getItem(<Link to={'/'}>{keyMenuItem.CHAT.name}</Link>, keyMenuItem.CHAT.key, <SiMinutemailer />),
-                // getItem(<Link to={'/admin/list'}>{keyMenuItem.ADMIN_LIST.name}</Link>, keyMenuItem.ADMIN_LIST.key, <HiUserGroup />),
+                getItem(<Link to={'/social'}>{keyMenuItem.SOCIAL_NETWORK.name}</Link>, keyMenuItem.SOCIAL_NETWORK.key, <PiShareNetwork />),
                 getItem(<Link onClick={logout} >{keyMenuItem.LOG_OUT.name}</Link>, keyMenuItem.LOG_OUT.key, <HiOutlineLogout />)
             ]
         } else {
@@ -66,7 +65,7 @@ const SideBar = () => {
                 getItem(<div className='text-center text-[#4b646f]'>Các chức năng khác</div>, keyMenuItem.FUNCTION),
                 getItem(<Link to={'/service/list'}>{keyMenuItem.SERVICE_LIST.name}</Link>, keyMenuItem.SERVICE_LIST.key, <SiAdguard />),
                 // getItem(<Link to={'/'}>{keyMenuItem.CHAT.name}</Link>, keyMenuItem.CHAT.key, <SiMinutemailer />),
-                // getItem(<Link to={'/admin/list'}>{keyMenuItem.ADMIN_LIST.name}</Link>, keyMenuItem.ADMIN_LIST.key, <HiUserGroup />),
+                getItem(<Link to={'/social'}>{keyMenuItem.SOCIAL_NETWORK.name}</Link>, keyMenuItem.SOCIAL_NETWORK.key, <PiShareNetwork />),
                 getItem(<Link onClick={logout} >{keyMenuItem.LOG_OUT.name}</Link>, keyMenuItem.LOG_OUT.key, <HiOutlineLogout />)
             ]
         }

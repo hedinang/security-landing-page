@@ -39,6 +39,10 @@ export const keyMenuItem = {
         key: 'ADMIN_LIST',
         name: 'Danh sách admin'
     },
+    SOCIAL_NETWORK: {
+        key: 'SOCIAL_NETWORK',
+        name: 'Mạng xã hội'
+    },
     LOG_OUT: {
         key: 'LOG_OUT',
         name: 'Thoát'

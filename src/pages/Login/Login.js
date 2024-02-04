@@ -1,6 +1,6 @@
 import { LoadingOutlined } from "@ant-design/icons"
 import { Button, Form, Input, Spin } from "antd"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import './style.scss'
 import apiFactory from "../../api"
 import { toast } from "react-toastify";
@@ -9,7 +9,8 @@ import { useNavigate } from "react-router-dom";
 
 const EXPIRY_TIME = process.env.REACT_APP_EXPIRY_TIME || "4";
 export default function Login() {
-    const navigate = useNavigate()
+    const token = Cookies.get('access_token')
+    const navigate = useNavigate();
     const [form] = Form.useForm()
     const [data, setData] = useState({
         name: '',
@@ -52,12 +53,18 @@ export default function Login() {
                 new Date().setHours(new Date().getHours() + parseInt(EXPIRY_TIME))
             );
             Cookies.set("access_token", result?.data.access_token, { path: "/", expires });
-            toast.success('Welcome to Shop Music')
+            toast.success('Welcome to TP Security Management')
             navigate('/applicant/list')
         } else {
             toast.error(result?.message)
         }
     }
+
+    useEffect(() => {
+        if (token) {
+            navigate('/applicant/list', { replace: true });
+        }
+    }, [token]);
     return <Form
         initialValues={data} onFinish={onFinish} autoComplete="off"
         layout="vertical"

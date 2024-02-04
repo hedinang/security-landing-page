@@ -9,6 +9,7 @@ export const DASHBOARD = '/dashboard';
 export const APPLICANT = '/applicant';
 export const SERVICE = '/service';
 export const REQUIREMENT = '/requirement';
+export const SOCIAL = '/social';
 
 
 

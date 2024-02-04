@@ -8,6 +8,7 @@ import DashboardApi from "./dashboardApi";
 import RequirementApi from "./requirementApi";
 import SaleApi from "./saleApi";
 import ServiceApi from "./serviceApi";
+import SocialApi from "./socialApi";
 import SongApi from "./songApi";
 
 
@@ -24,6 +25,7 @@ const apiFactory = {
     applicantApi: new ApplicantApi(),
     requirementApi: new RequirementApi(),
     serviceApi: new ServiceApi(),
+    socialApi: new SocialApi(),
 };
 
 export default apiFactory;
