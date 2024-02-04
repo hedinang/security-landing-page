@@ -11,7 +11,7 @@
     "@types/react-map-gl": "^6.1.6",
     "@types/react-router-dom": "^5.3.3",
     "@types/styled-components": "^5.1.28",
-    "antd": "^5.12.1",
+    "antd": "^5.14.0",
     "axios": "^1.6.0",
     "date-fns": "^3.3.1",
     "deck.gl": "^8.9.33",

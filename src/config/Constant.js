@@ -3,13 +3,17 @@ export const keyMenuItem = {
         key: 'DASHBOARD',
         name: 'Thống kê'
     },
+    SERVICE_LIST: {
+        key: 'SERVICE_LIST',
+        name: 'Danh sách dịch vụ'
+    },
     APPLICANT_LIST: {
         key: 'APPLICANT_LIST',
         name: 'Danh sách ứng viên'
     },
-    AUTHOR_LIST: {
-        key: 'AUTHOR_LIST',
-        name: 'Danh sách tác giả'
+    REQUIREMENT_LIST: {
+        key: 'REQUIREMENT_LIST',
+        name: 'Danh sách yêu cầu'
     },
     SALE_LIST: {
         key: 'SALE_LIST',
@@ -98,6 +102,21 @@ const GENDER_LIST = [{
     value: 'FEMALE'
 }]
 
+const GENDER_REQUIREMENT_LIST = [
+    {
+        label: 'Không quan trọng',
+        value: 'UNIMPORTANT'
+
+    }, {
+        label: 'Nam',
+        value: 'MALE'
+
+    },
+    {
+        label: 'Nữ',
+        value: 'FEMALE'
+    }]
+
 const POSITION_LIST = [{
     label: 'Bảo vệ',
     value: 'GUARD'
@@ -116,6 +135,23 @@ const POSITION_LIST = [{
     value: 'ACCOUNTANT'
 }]
 
+
+// const SERVICE_LIST = [
+//     "Bảo vệ cửa hàng",
+//     "Bảo vệ chung cư",
+//     "Bảo vệ tòa nhà",
+//     "Bảo vệ ngân hàng",
+//     "Bảo vệ nhà máy",
+//     "Bảo vệ khu công nghiệp",
+//     "Bảo vệ bệnh viện",
+//     "Bảo vệ trường học",
+//     "Bảo vệ giữ xe",
+//     "Bảo vệ mục tiêu cố định khác",
+//     "Bảo vệ sự kiện",
+//     "Bảo vệ yếu nhân",
+//     "Tư vấn an ninh"
+// ]
+
 export {
-    WORKING_TIME_LIST, SUPPORT_LIST, GENDER_LIST, POSITION_LIST
+    WORKING_TIME_LIST, SUPPORT_LIST, GENDER_LIST, POSITION_LIST, GENDER_REQUIREMENT_LIST
 }

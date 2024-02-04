@@ -3,9 +3,10 @@ import { DashboardOutlined, GiftOutlined, UnorderedListOutlined, UserOutlined } 
 import { Layout, Menu } from 'antd';
 import { useMemo } from 'react';
 import { BsFillCartFill } from 'react-icons/bs';
-import { FaMusic } from 'react-icons/fa';
+import { SiAdguard } from "react-icons/si";
 import { HiOutlineLogout, HiUserGroup } from 'react-icons/hi';
 import { PiPersonArmsSpreadDuotone } from "react-icons/pi";
+import { SlPaperPlane } from "react-icons/sl";
 import { SiMinutemailer } from 'react-icons/si';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -40,14 +41,14 @@ const SideBar = () => {
     const items = useMemo(() => {
         if (collapse) {
             return [
-                getItem(<Link to={'/applicant'}>{keyMenuItem.APPLICANT_LIST.name}</Link>, keyMenuItem.APPLICANT_LIST.key, <PiPersonArmsSpreadDuotone />),
-                // getItem(<Link to={'/song/list'}>{keyMenuItem.SONG_LIST.name}</Link>, keyMenuItem.SONG_LIST.key, <FaMusic />),
+                getItem(<Link to={'/applicant/list'}>{keyMenuItem.APPLICANT_LIST.name}</Link>, keyMenuItem.APPLICANT_LIST.key, <PiPersonArmsSpreadDuotone />),
+                getItem(<Link to={'/requirement/list'}>{keyMenuItem.REQUIREMENT_LIST.name}</Link>, keyMenuItem.REQUIREMENT_LIST.key, <SlPaperPlane />),
                 // getItem(<Link to={'/author/list'}>{keyMenuItem.AUTHOR_LIST.name}</Link>, keyMenuItem.AUTHOR_LIST.key, <UserOutlined />),
                 // getItem(<Link to={'/sale/list'}>{keyMenuItem.SALE_LIST.name}</Link>, keyMenuItem.SALE_LIST.key, <BsFillCartFill />),
                 // getItem(<Link to={'/category/list'}>{keyMenuItem.CATEGORY_LIST.name}</Link>, keyMenuItem.CATEGORY_LIST.key, <UnorderedListOutlined />),
                 // getItem(<Link to={'/'}>{keyMenuItem.PRESENT_LIST.name}</Link>, keyMenuItem.PRESENT_LIST.key, <GiftOutlined />),
 
-                // getItem(<Link to={'/customer/list'}>{keyMenuItem.CUSTOMER_LIST.name}</Link>, keyMenuItem.CUSTOMER_LIST.key, <UserOutlined />),
+                getItem(<Link to={'/service/list'}>{keyMenuItem.SERVICE_LIST.name}</Link>, keyMenuItem.SERVICE_LIST.key, <SiAdguard />),
                 // getItem(<Link to={'/'}>{keyMenuItem.CHAT.name}</Link>, keyMenuItem.CHAT.key, <SiMinutemailer />),
                 // getItem(<Link to={'/admin/list'}>{keyMenuItem.ADMIN_LIST.name}</Link>, keyMenuItem.ADMIN_LIST.key, <HiUserGroup />),
                 getItem(<Link onClick={logout} >{keyMenuItem.LOG_OUT.name}</Link>, keyMenuItem.LOG_OUT.key, <HiOutlineLogout />)
@@ -55,15 +56,15 @@ const SideBar = () => {
         } else {
             return [
                 getItem(<div className='text-center text-[#4b646f]'>Các chức năng quản lý</div>, keyMenuItem.FUNCTION),
-                getItem(<Link to={'/applicant'}>{keyMenuItem.APPLICANT_LIST.name}</Link>, keyMenuItem.APPLICANT_LIST.key, <PiPersonArmsSpreadDuotone />),
-                // getItem(<Link to={'/song/list'}>{keyMenuItem.SONG_LIST.name}</Link>, keyMenuItem.SONG_LIST.key, <FaMusic />),
+                getItem(<Link to={'/applicant/list'}>{keyMenuItem.APPLICANT_LIST.name}</Link>, keyMenuItem.APPLICANT_LIST.key, <PiPersonArmsSpreadDuotone />),
+                getItem(<Link to={'/requirement/list'}>{keyMenuItem.REQUIREMENT_LIST.name}</Link>, keyMenuItem.REQUIREMENT_LIST.key, <SlPaperPlane />),
                 // getItem(<Link to={'/author/list'}>{keyMenuItem.AUTHOR_LIST.name}</Link>, keyMenuItem.AUTHOR_LIST.key, <UserOutlined />),
                 // getItem(<Link to={'/sale/list'}>{keyMenuItem.SALE_LIST.name}</Link>, keyMenuItem.SALE_LIST.key, <BsFillCartFill />),
                 // getItem(<Link to={'/category/list'}>{keyMenuItem.CATEGORY_LIST.name}</Link>, keyMenuItem.CATEGORY_LIST.key, <UnorderedListOutlined />),
                 // getItem(<Link to={'/'}>{keyMenuItem.PRESENT_LIST.name}</Link>, keyMenuItem.PRESENT_LIST.key, <GiftOutlined />),
 
-                // getItem(<div className='text-center text-[#4b646f]'>Các chức năng khác</div>, keyMenuItem.FUNCTION),
-                // getItem(<Link to={'/customer/list'}>{keyMenuItem.CUSTOMER_LIST.name}</Link>, keyMenuItem.CUSTOMER_LIST.key, <UserOutlined />),
+                getItem(<div className='text-center text-[#4b646f]'>Các chức năng khác</div>, keyMenuItem.FUNCTION),
+                getItem(<Link to={'/service/list'}>{keyMenuItem.SERVICE_LIST.name}</Link>, keyMenuItem.SERVICE_LIST.key, <SiAdguard />),
                 // getItem(<Link to={'/'}>{keyMenuItem.CHAT.name}</Link>, keyMenuItem.CHAT.key, <SiMinutemailer />),
                 // getItem(<Link to={'/admin/list'}>{keyMenuItem.ADMIN_LIST.name}</Link>, keyMenuItem.ADMIN_LIST.key, <HiUserGroup />),
                 getItem(<Link onClick={logout} >{keyMenuItem.LOG_OUT.name}</Link>, keyMenuItem.LOG_OUT.key, <HiOutlineLogout />)

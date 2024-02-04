@@ -40,7 +40,7 @@ const Recruitment = ({ title, content, id }) => {
 
   const onFinish = async (values) => {
     setLoading(true)
-    const result = await apiFactory.applicantApi.create({
+    const result = await apiFactory.requirementApi.create({
       name: values?.name,
       year_of_birth: values?.yearOfBirth?.$y,
       gender: values?.gender,

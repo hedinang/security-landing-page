@@ -5,7 +5,9 @@ import AuthorApi from "./authorApi";
 import CategoryApi from "./categoryApi";
 import CustomerApi from "./customerApi";
 import DashboardApi from "./dashboardApi";
+import RequirementApi from "./requirementApi";
 import SaleApi from "./saleApi";
+import ServiceApi from "./serviceApi";
 import SongApi from "./songApi";
 
 
@@ -20,6 +22,8 @@ const apiFactory = {
     authorApi: new AuthorApi(),
     dashboardApi: new DashboardApi(),
     applicantApi: new ApplicantApi(),
+    requirementApi: new RequirementApi(),
+    serviceApi: new ServiceApi(),
 };
 
 export default apiFactory;

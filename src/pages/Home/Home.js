@@ -1,16 +1,11 @@
-import { lazy } from "react";
 import IntroContent from "../../content/IntroContent.json";
-import AboutContent from "../../content/AboutContent.json";
-import MissionContent from "../../content/MissionContent.json";
-import ProductContent from "../../content/ProductContent.json";
 import ContactContent from "../../content/ContactContent.json";
 import Contact from "../../components/Contact/Contact";
 import ContentBlock from "../../components/ContentBlock";
-import Recruitment from "../../components/ContactForm";
-import Service from "../../components/Service/Service";
+import Service from "../Requirement/Requirement";
 import Container from "../../common/Container";
 import ScrollToTop from "../../common/ScrollToTop";
-
+import Recruitment from "../../components/ContactForm";
 
 // const Container = lazy(() => import("../../common/Container"));
 // const ScrollToTop = lazy(() => import("../../common/ScrollToTop"));

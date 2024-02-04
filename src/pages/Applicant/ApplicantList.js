@@ -74,7 +74,7 @@ const columns = [
     },
 ];
 
-const Applicant = () => {
+const ApplicantList = () => {
     const [applicantList, setApplicantList] = useState([])
     const navigate = useNavigate()
     const [limit, setLimit] = useState(10)
@@ -131,4 +131,4 @@ const Applicant = () => {
     </div>
 };
 
-export { Applicant }
+export { ApplicantList }

@@ -1,71 +1,36 @@
-import { Row, Col, Form, Input, Button, Modal, Select, Spin, Radio } from "antd";
-import ServiceContent from "../../content/ServiceContent.json";
+import { Row, Col, Form, Input, Button, Select, Radio } from "antd";
 import './style.scss'
 import { useEffect, useState } from "react";
-import { Option } from "antd/es/mentions";
-import { NumericFormat } from 'react-number-format';
-
+import apiFactory from "../../api";
+import { toast } from 'react-toastify';
+import { GENDER_REQUIREMENT_LIST } from "../../config/Constant";
 
 const { TextArea } = Input;
 
-const services = ServiceContent.services
-
-
 const AsyncSelectAuthor = ({ value, onChange }) => {
-    const [limit, setLimit] = useState(10);
+    const [limit, setLimit] = useState(1000);
     const [page, setPage] = useState(1);
     const [totalItems, setTotalItems] = useState(0);
     // const [currentTotal, setCurrentTotal] = useState(0)
     const [loading, setLoading] = useState(false)
     const [serviceList, setServiceList] = useState([])
-    // const fetchAuthorList = async () => {
-    //     const result = await apiFactory.authorApi.getList({
-    //         per: limit,
-    //         page: page,
-    //     })
-    //     if (result?.data?.items) {
-    //         setAuthorList(result?.data?.items?.map(e => ({
-    //             component: <Option key={e.id} value={e.id}>
-    //                 {e.name}
-    //             </Option>,
-    //             value: e.id,
-    //             label: e.name
-    //         })))
-    //         setTotalItems(result?.data?.total_items)
-    //     }
-    // }
+    const fetchServiceList = async () => {
+        const result = await apiFactory.serviceApi.getList({
+            limit: limit,
+            page: page,
+            // search: search
+        })
 
-    // const onscroll = async (event) => {
-    //     if ((event.currentTarget.scrollTop + event.currentTarget.clientHeight) >= event.currentTarget.scrollHeight &&
-    //         (page * limit) < totalItems && !loading) {
-    //         authorList.push(<Option key={'loading'} value={'loading'} disabled>
-    //             <Spin className="absolute left-[50%]" />
-    //         </Option>)
-    //         setAuthorList([...authorList])
-    //         setLoading(true)
-    //         // setTimeout(async () => {
-    //         //     const data = await apiFactory.categoryApi.getList({
-    //         //         per: limit,
-    //         //         page: page + 1,
-    //         //     })
-    //         //     if (data) {
-    //         //         authorList.pop()
-    //         //         const newAuthorList = authorList.concat(data?.data?.items.map((e) => ({
-    //         //             component: <Option key={e.id} value={e.id}>
-    //         //                 {e.name}
-    //         //             </Option>,
-    //         //             value: e.id,
-    //         //             label: e.name
-    //         //         })))
-    //         //         setAuthorList(newAuthorList)
-    //         //         setPage(page + 1)
-    //         //         setTotalItems(data?.data?.total_items)
-    //         //     }
-    //         //     setLoading(false)
-    //         // }, 500)
+        setServiceList(result?.data?.items?.map(s => (
+            {
+                value: s?.id,
+                label: s?.name
+            }
+        )))
 
-    //     }
-    // }
+        setTotalItems(result?.data?.total_items)
+    }
+
     const chooseService = (e) => {
         const element = serviceList.find(f => f.value === e)
         if (element) {
@@ -73,11 +38,7 @@ const AsyncSelectAuthor = ({ value, onChange }) => {
         }
     }
     useEffect(() => {
-        setServiceList(services.map(s => ({
-            value: s,
-            label: s
-        })))
-        // fetchAuthorList()
+        fetchServiceList()
     }, [])
     return <>
         <Select
@@ -110,6 +71,20 @@ const SelectAge = ({ value, onChange }) => {
         })
     }
 
+    const onChangeFromAge = (e) => {
+        onChange({
+            ...value,
+            from: e.target.value
+        })
+    }
+
+    const onChangeToAge = (e) => {
+        onChange({
+            ...value,
+            to: e.target.value
+        })
+    }
+
     return <div>
         <Radio.Group
             onChange={switchAge}
@@ -126,7 +101,10 @@ const SelectAge = ({ value, onChange }) => {
                         if (!/[0-9.]/.test(event.key)) {
                             event.preventDefault();
                         }
-                    }} />
+
+                    }}
+                        value={value.from}
+                        onChange={onChangeFromAge} />
                 </Col>
                 <Col span={2} />
                 <Col span={11}>
@@ -135,91 +113,79 @@ const SelectAge = ({ value, onChange }) => {
                         if (!/[0-9.]/.test(event.key)) {
                             event.preventDefault();
                         }
-                    }} />
+                    }}
+                        value={value.to}
+                        onChange={onChangeToAge} />
                 </Col>
             </Row>}
     </div>
 }
 
-export default function Service() {
+export default function Requirement() {
     const [form] = Form.useForm()
-    const [genderList, setGenderList] = useState([{
-        label: 'Không quan trọng',
-        value: 'unimportant'
-    },
-    {
-        label: 'Nam',
-        value: 'male'
-    },
-    {
-        label: 'Nữ',
-        value: 'female'
-    }])
     const [initalData, setInitialData] = useState({
         email: '',
         phone: '',
-        securityType: '',
+        kindOfService: '',
         location: '',
         description: '',
         age: {
-            value: 'unimportant'
+            value: 'unimportant',
+            from: 26,
+            to: 30
         },
         shape: '',
-        gender: 'unimportant',
+        gender: "MALE",
         specialty: ''
     })
-    const [loading, setLoading] = useState(false)
 
+    const [serviceList, setServiceList] = useState([])
+    const [loading, setLoading] = useState(false)
+    const [genderList, setGenderList] = useState(GENDER_REQUIREMENT_LIST)
     const onFinish = async (values) => {
         let result
         setLoading(true)
-        // if (different.type === 'edit') {
-        //     result = await apiFactory.songApi.update({
-        //         id: param?.id,
-        //         name: values?.name,
-        //         author: values?.author?.value,
-        //         category: values?.category?.map(e => e.value),
-        //         image: values?.img?.file,
-        //         image_url: values?.img?.url,
-        //         short_audio: values?.short_song?.file,
-        //         short_audio_url: values?.short_song?.url,
-        //         full_audio: values?.full_song?.file,
-        //         full_audio_url: values?.full_song?.url,
-        //         duration: initalData.duration,
-        //         unit_price: typeof (values?.unitPrice) === 'number' ? values?.unitPrice : Number(values?.unitPrice?.replaceAll(',', ''))
-        //     })
-        // }
+        result = await apiFactory.requirementApi.create({
+            email: values?.email,
+            phone: values?.phone,
+            kind_of_service: values?.kindOfService?.value,
+            location: values?.location,
+            description: values?.description,
+            age: values?.age,
+            shape: values?.shape,
+            gender: values?.gender,
+            specialty: values?.specialty,
+        })
+        setLoading(false)
 
-        // if (different.type === 'add') {
-        //     result = await apiFactory.songApi.create({
-        //         name: values?.name,
-        //         author: values?.author?.value,
-        //         category: values?.category.map(e => e.value),
-        //         image: values?.img.file,
-        //         short_audio: values?.short_song.file,
-        //         full_audio: values?.full_song.file,
-        //         duration: initalData.duration,
-        //         unit_price: typeof (values?.unitPrice) === 'number' ? values?.unitPrice : Number(values?.unitPrice?.replaceAll(',', ''))
-        //     })
-        // }
-        // setLoading(false)
-
-        // if (result?.status === 200) {
-        //     if (different.type === 'add') {
-        //         toast.success('Tạo danh mục nhạc thành công')
-        //     }
-
-        //     if (different.type === 'edit') {
-        //         toast.success('Cập nhật danh mục nhạc thành công')
-        //     }
-
-        //     navigate('/song/list')
-        // } else {
-        //     toast.error(result?.message)
-        // }
+        if (result?.status === 200) {
+            toast.success('Tạo yêu cầu thành công')
+        } else {
+            toast.error(result?.message)
+        }
     }
 
+    const [limit, setLimit] = useState(1000);
+    const [page, setPage] = useState(1);
+    const [totalItems, setTotalItems] = useState(0);
+    const fetchServiceList = async () => {
+        const result = await apiFactory.serviceApi.getList({
+            limit: limit,
+            page: page,
+            // search: search
+        })
+        setServiceList(result?.data?.items?.map(s => (
+            {
+                value: s.id,
+                label: s.name
+            }
+        )))
 
+        setTotalItems(result?.data?.total_items)
+    }
+    useEffect(() => {
+        fetchServiceList()
+    }, [])
 
     return <Form
         initialValues={initalData}
@@ -228,18 +194,18 @@ export default function Service() {
         // labelCol={{ style: { width: 120 } }}
         layout="vertical"
     >
-        <div id="service" className="services">
+        <div id="requirement" className="requirements">
             <h6 className="text-center mb-[50px]">Dịch vụ và báo giá</h6>
             <Row className="mb-[50px]">
                 <Col lg={12} md={12} sm={24} xs={24} className="content">
-                    {services.slice(0, services.length / 2).map(service => <div>{service}</div>)}
+                    {serviceList?.slice(0, serviceList?.length / 2 + 1).map(service => <div>{service?.label}</div>)}
                 </Col>
                 <Col lg={12} md={12} sm={24} xs={24} className="content">
-                    {services.slice(services.length / 2, services.length - 1).map(service => <div>{service}</div>)}
+                    {serviceList?.slice(serviceList?.length / 2 + 1, serviceList?.length).map(service => <div>{service?.label}</div>)}
                 </Col>
             </Row>
             <div className="text-[#18216D] text-[21px]" >Gửi yêu cầu theo mẫu và số điện thoại hoặc email để nhận kết quả tư vấn và hỗ trợ</div>
-            <Row className="contact-form mb-[50px]">
+            <Row className="form mb-[50px]">
                 <Col lg={11} md={11} sm={24} xs={24} className="register-form">
                     <Col span={24}>
                         <Form.Item label="Email khách hàng"
@@ -265,7 +231,7 @@ export default function Service() {
                     </Col>
                     <Col span={24}>
                         <Form.Item label="Loại dịch vụ bảo vệ"
-                            name="identification"
+                            name="kindOfService"
                             rules={[
                                 {
                                     required: true,
@@ -277,7 +243,7 @@ export default function Service() {
                     </Col>
                     <Col span={24}>
                         <Form.Item label="Địa điểm muốn bảo vệ"
-                            name="name"
+                            name="location"
                             rules={[
                                 {
                                     required: true,
@@ -318,19 +284,19 @@ export default function Service() {
                         >
                             <Select
                                 options={genderList}
-                                // value={value}
+                            // value={value}
                             />
                         </Form.Item>
                     </Col>
                     <Col span={24}>
                         <Form.Item label="Yêu cầu đặc biệt khác"
-                            name="specilty"
+                            name="specialty"
                         >
                             <TextArea />
                         </Form.Item>
                     </Col>
                 </Col>
-                <Button className="bg-[white] w-[100px]">Gửi</Button>
+                <Button className="bg-[white] w-[100px]" htmlType="submit">Gửi</Button>
             </Row>
         </div>
     </Form>

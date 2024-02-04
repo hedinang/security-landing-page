@@ -4,7 +4,10 @@ import PublicLayout from '../components/layouts/PublicLayout';
 import Login from '../pages/Login/Login';
 import Home from '../pages/Home/Home';
 import AuthLayout from '../components/layouts/AuthLayout';
-import { Applicant } from '../pages/Applicant/Applicant';
+import { ApplicantList } from '../pages/Applicant/ApplicantList';
+import { ServiceList } from '../pages/Service/ServiceList';
+import ServiceDetail from '../pages/Service/ServiceDetail';
+import { RequirementList } from '../pages/Requirement/RequirementList';
 
 const router = createBrowserRouter([
   {
@@ -20,12 +23,53 @@ const router = createBrowserRouter([
     element: <Login />,
   },
   {
-    path: '/applicant',
-    element: (
-      <AuthLayout>
-        <Applicant />
-      </AuthLayout>
-    ),
+    // path: '/',
+    element: <AuthLayout />,
+    // errorElement: <ErrorElement />,
+    children: [
+      {
+        path: '/applicant/list',
+        element: (
+          <ApplicantList />
+        ),
+      },
+      {
+        path: '/requirement/list',
+        element: (
+          <RequirementList />
+        ),
+      },
+      {
+        path: '/service/list',
+        element: (
+          <ServiceList />
+        ),
+      },
+      {
+        path: '/service/add',
+        element: (
+          <ServiceDetail different={{ type: 'add' }} />
+        ),
+      },
+      {
+        path: '/service/edit/:id',
+        element: <ServiceDetail
+          different={{ type: 'edit' }} />
+      },
+      {
+        path: '/service/:id',
+        element: <ServiceDetail
+          different={{ type: 'view' }} />
+      },
+
+      {
+        path: '/requirement/list',
+        element: (
+          <RequirementList />
+        ),
+      }
+    ]
   },
+
 ]);
 export default router;

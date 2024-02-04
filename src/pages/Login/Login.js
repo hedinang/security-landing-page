@@ -53,7 +53,7 @@ export default function Login() {
             );
             Cookies.set("access_token", result?.data.access_token, { path: "/", expires });
             toast.success('Welcome to Shop Music')
-            navigate('/applicant')
+            navigate('/applicant/list')
         } else {
             toast.error(result?.message)
         }

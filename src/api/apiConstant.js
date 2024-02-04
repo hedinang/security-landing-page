@@ -7,6 +7,8 @@ export const SALE = '/sale';
 export const AUTHOR = '/author';
 export const DASHBOARD = '/dashboard';
 export const APPLICANT = '/applicant';
+export const SERVICE = '/service';
+export const REQUIREMENT = '/requirement';
 
 
 

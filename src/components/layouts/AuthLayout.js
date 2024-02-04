@@ -53,7 +53,7 @@ const AuthLayout = ({ children }) => {
                     {/* <SideBarDrawer/> */}
                     <Layout.Content >
                         <ManagementHeader />
-                        {children}
+                        <Outlet />
                     </Layout.Content>
                 </Layout>
             </Space>
